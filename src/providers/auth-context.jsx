@@ -1,6 +1,9 @@
-import { getUserProfile, onAuthChange, signOut } from "@/lib/auth";
 import { createContext, useEffect, useState } from "react";
+import { onAuthChange } from "../lib/auth";
+import { getUserProfile } from "../lib/get-user-profile";
+import { signOut } from "../lib/sing-out";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
