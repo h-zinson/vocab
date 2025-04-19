@@ -36,7 +36,7 @@ export const UserButton = ({ user, onLogout }) => {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           className="text-red-600 focus:text-red-600"
-          onClick={onLogout}>
+          onClick={() => onLogout()}>
           Log Out
         </DropdownMenuItem>
       </DropdownMenuContent>
