@@ -51,7 +51,7 @@ const LoginPage = () => {
             <LogoIcon />
           </Link> */}
             <h1 className="mb-1 mt-4 text-xl font-semibold">
-              Sign In to Tailark
+              Sign In to Vocab
             </h1>
             <p className="text-sm">Welcome back! Sign in to continue</p>
           </div>
