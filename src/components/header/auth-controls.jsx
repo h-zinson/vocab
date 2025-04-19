@@ -14,7 +14,7 @@ export function AuthControls({ isLoggedIn, profile, onLogout }) {
       ) : (
         <>
           <Button asChild variant="ghost" size="sm">
-            <Link to="/signin">Sign in</Link>
+            <Link to="/login">Sign in</Link>
           </Button>
           <Button asChild size="sm">
             <Link to="/signup">Sign up</Link>
