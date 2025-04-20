@@ -9,8 +9,7 @@ export function AuthControls({ isLoggedIn, profile, onLogout }) {
       {isLoggedIn && profile ? (
         <>
           <UserButton user={profile} onLogout={onLogout} />
-
-          <div className="h-4 w-px bg-border" />
+          <ModeToggle />
         </>
       ) : (
         <>
