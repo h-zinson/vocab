@@ -7,6 +7,8 @@ import UnAuthenticatedRoute from "./components/un-authenticated";
 import { Header } from "./components/header/header";
 import Footer from "./components/footer";
 import { ThemeProvider } from "./providers/theme-provider";
+import Dashboard from "./pages/Dashboard";
+import { Toaster } from "./components/ui/toaster";
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
         <main>
           <Routes>
             <Route index element={<HomePage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route
               path="/login"
               element={
@@ -35,6 +38,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <Toaster />
       </AuthProvider>
     </ThemeProvider>
   );
