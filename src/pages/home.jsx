@@ -1,11 +1,12 @@
-import { Button } from "@/components/ui/button";
+import HeroSection from "../components/hero/here-section";
+import Features from "../components/features/features";
 
 function HomePage() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-4xl font-bold">HomePage</h1>
-      <Button>Click me</Button>
-    </div>
+    <>
+      <HeroSection />
+      <Features />
+    </>
   );
 }
 
