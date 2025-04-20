@@ -7,7 +7,7 @@ import UnAuthenticatedRoute from "./components/un-authenticated";
 import { Header } from "./components/header/header";
 import Footer from "./components/footer";
 import { ThemeProvider } from "./providers/theme-provider";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/dashboard";
 import { Toaster } from "./components/ui/toaster";
 import ProtectedRoute from "./components/protected";
 import VocabularyList from "./pages/vocabulary-list";
