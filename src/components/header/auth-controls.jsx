@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 import { UserButton } from "./user-button";
+import { ModeToggle } from "../mode-toggle";
 
 export function AuthControls({ isLoggedIn, profile, onLogout }) {
   return (
@@ -19,6 +20,8 @@ export function AuthControls({ isLoggedIn, profile, onLogout }) {
           <Button asChild size="sm">
             <Link to="/signup">Sign up</Link>
           </Button>
+
+          <ModeToggle />
           <div className="h-4 w-px bg-border" />
         </>
       )}
