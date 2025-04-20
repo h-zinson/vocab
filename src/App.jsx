@@ -10,6 +10,7 @@ import { ThemeProvider } from "./providers/theme-provider";
 import Dashboard from "./pages/Dashboard";
 import { Toaster } from "./components/ui/toaster";
 import ProtectedRoute from "./components/protected";
+import VocabularyList from "./pages/vocabulary-list";
 
 function App() {
   return (
@@ -24,6 +25,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/vocabulary"
+              element={
+                <ProtectedRoute>
+                  <VocabularyList />
                 </ProtectedRoute>
               }
             />
