@@ -9,6 +9,7 @@ import Footer from "./components/footer";
 import { ThemeProvider } from "./providers/theme-provider";
 import Dashboard from "./pages/Dashboard";
 import { Toaster } from "./components/ui/toaster";
+import ProtectedRoute from "./components/protected";
 
 function App() {
   return (
@@ -18,7 +19,14 @@ function App() {
         <main>
           <Routes>
             <Route index element={<HomePage />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/login"
               element={
