@@ -8,6 +8,7 @@ import { signUp } from "../lib/sign-up";
 import { Label } from "../components/ui/label";
 import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
+import { Logo } from "../components/header/logo";
 
 const SignUpPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -73,7 +74,7 @@ const SignUpPage = () => {
         <div className="bg-card -m-px rounded-[calc(var(--radius)+.125rem)] border p-8 pb-6">
           <div className="text-center">
             <Link to="/" aria-label="go home" className="mx-auto block w-fit">
-              {/* <LogoIcon /> */}
+              <Logo />
             </Link>
             <h1 className="text-title mb-1 mt-4 text-xl font-semibold">
               Create a Vocab Account
@@ -136,22 +137,6 @@ const SignUpPage = () => {
               <p className="text-xs text-muted-foreground mt-1">
                 Must be at least 6 characters
               </p>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="confirmPassword" className="block text-sm">
-                Confirm Password
-              </Label>
-              <Input
-                type="password"
-                {...register("confirmPassword")}
-                id="confirmPassword"
-              />
-              {errors.confirmPassword && (
-                <p className="text-sm text-red-500">
-                  {errors.confirmPassword.message}
-                </p>
-              )}
             </div>
 
             <Button className="w-full" type="submit" disabled={isLoading}>
