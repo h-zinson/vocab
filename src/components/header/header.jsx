@@ -6,6 +6,7 @@ import { HeaderNavMobile } from "./header-nav-mobile";
 import { AuthControls } from "./auth-controls";
 import { MenuToggle } from "./menu-toggle";
 import { useAuth } from "../../hooks/use-auth";
+import { ModeToggle } from "../mode-toggle";
 
 export function Header() {
   const [menuState, setMenuState] = React.useState(false);
@@ -46,6 +47,7 @@ export function Header() {
 
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2 lg:hidden relative z-[1001]">
+            <ModeToggle />
             <MenuToggle
               isOpen={menuState}
               onClick={() => setMenuState(!menuState)}
