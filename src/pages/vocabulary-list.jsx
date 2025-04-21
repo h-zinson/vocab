@@ -37,6 +37,8 @@ export default function VocabularyList() {
     if (!user) return;
 
     try {
+      console.log("Fetching words for user:", user.id);
+
       const { data, error } = await supabase
         .from("words")
         .select("*")
@@ -44,9 +46,11 @@ export default function VocabularyList() {
         .order("created_at", { ascending: false });
 
       if (error) {
+        console.error("Error fetching words:", error);
         throw error;
       }
 
+      console.log("Fetched words:", data);
       setWords(data || []);
     } catch (error) {
       console.error("Error fetching words:", error);
@@ -151,6 +155,43 @@ export default function VocabularyList() {
     window.speechSynthesis.speak(utterance);
   };
 
+  const deleteWord = async (wordId, e) => {
+    e.stopPropagation();
+
+    try {
+      console.log("Attempting to delete word:", wordId);
+
+      const { error } = await supabase
+        .from("words")
+        .delete()
+        .eq("id", wordId)
+        .eq("user_id", user.id);
+
+      if (error) {
+        console.error("Delete error:", error);
+        throw error;
+      }
+
+      await fetchWords();
+
+      toast({
+        title: "Word deleted",
+        description: "The word has been removed from your vocabulary list.",
+      });
+
+      if (selectedWord?.id === wordId) {
+        setSelectedWord(null);
+      }
+    } catch (error) {
+      console.error("Error deleting word:", error);
+      toast({
+        title: "Failed to delete",
+        description: "Could not delete the word. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 pb-8">
       <div className="mt-32 space-y-8">
@@ -171,6 +212,7 @@ export default function VocabularyList() {
           filteredWords={filteredWords}
           handleWordClick={handleWordClick}
           playPronunciation={playPronunciation}
+          deleteWord={deleteWord}
           isLoading={isLoading}
         />
 
