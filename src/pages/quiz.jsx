@@ -41,7 +41,6 @@ export default function Quiz() {
     },
   });
 
-  // Fetch words from Supabase
   useEffect(() => {
     allWords();
   }, [user]);
@@ -68,7 +67,6 @@ export default function Quiz() {
     }));
 
     try {
-      // Randomly select words for the quiz
       const shuffledWords = [...words].sort(() => Math.random() - 0.5);
       const selectedWords = shuffledWords.slice(
         0,
