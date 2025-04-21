@@ -15,12 +15,14 @@ import {
 } from "../ui/table";
 import { Skeleton } from "../ui/skeleton";
 import { Button } from "../ui/button";
-import { Volume2 } from "lucide-react";
+import { Volume2, Trash2 } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 function WordTable({
   filteredWords,
   handleWordClick,
   playPronunciation,
+  deleteWord,
   isLoading,
 }) {
   return (
@@ -44,32 +46,46 @@ function WordTable({
               <TableRow>
                 <TableHead>Word</TableHead>
                 <TableHead>Added On</TableHead>
-                <TableHead className="w-[100px]">Actions</TableHead>
+                <TableHead className="w-[120px]">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {filteredWords.map((word) => (
-                <TableRow
-                  key={word.id}
-                  className="cursor-pointer"
-                  onClick={() => handleWordClick(word)}>
-                  <TableCell className="font-medium">{word.word}</TableCell>
-                  <TableCell>
-                    {new Date(word.created_at).toLocaleDateString()}
-                  </TableCell>
-                  <TableCell>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        playPronunciation(word.word);
-                      }}>
-                      <Volume2 className="size-4" />
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              ))}
+              <AnimatePresence>
+                {filteredWords.map((word) => (
+                  <motion.tr
+                    key={word.id}
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="cursor-pointer"
+                    onClick={() => handleWordClick(word)}>
+                    <TableCell className="font-medium">{word.word}</TableCell>
+                    <TableCell>
+                      {new Date(word.created_at).toLocaleDateString()}
+                    </TableCell>
+                    <TableCell>
+                      <div className="flex gap-2">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            playPronunciation(word.word);
+                          }}>
+                          <Volume2 className="size-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={(e) => deleteWord(word.id, e)}
+                          className="text-destructive hover:text-destructive">
+                          <Trash2 className="size-4" />
+                        </Button>
+                      </div>
+                    </TableCell>
+                  </motion.tr>
+                ))}
+              </AnimatePresence>
             </TableBody>
           </Table>
         )}
