@@ -12,6 +12,9 @@ import { Toaster } from "./components/ui/toaster";
 import ProtectedRoute from "./components/protected";
 import VocabularyList from "./pages/vocabulary-list";
 
+import SentenceGenerator from "./pages/sentence";
+import Quiz from "./pages/quiz";
+
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -33,6 +36,22 @@ function App() {
               element={
                 <ProtectedRoute>
                   <VocabularyList />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/sentence-generator"
+              element={
+                <ProtectedRoute>
+                  <SentenceGenerator />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/quiz"
+              element={
+                <ProtectedRoute>
+                  <Quiz />
                 </ProtectedRoute>
               }
             />
